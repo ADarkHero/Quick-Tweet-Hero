@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><config>	
+	<twitter>
+		<consumerkey>3ePJqhOF8lwhrWUoJH10cl8MV</consumerkey>
+		<consumersecret>TEBPtM07rznjkU6DANjkqxzeImrcMT1rwtlYuB4xqkDVFi2kDo</consumersecret>
+		<accesstoken>63222608-N8XrDkFJ9Zh3NmbldlgbqSzRVGOog0hmGitjKNHfT</accesstoken>
+		<accesstokensecret>VDfBJRBxyTGMMCPytNQ2ZZOpPYG7tPZ3K3ZZkOQwxIjhl</accesstokensecret>
+	</twitter>
+	<position>
+		<x>620.0</x>
+		<y>225.0</y>
+	</position>
+</config>
