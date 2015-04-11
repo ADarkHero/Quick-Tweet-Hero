@@ -20,6 +20,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.xml.sax.SAXException;
 import quicktweethero.QuickTweetHeroController;
 import quicktweethero.tweet.Tweet;
 
@@ -45,7 +46,7 @@ public class ConfigController implements Initializable {
     private Hyperlink twitterDevLink;  
 
     @FXML
-    private void updateConfig(ActionEvent event) {
+    private void updateConfig(ActionEvent event) throws SAXException {
         Tweet tw = new Tweet();
         tw.writeConfig(consumerKey, consumerSecret, accessToken, accessSecret);
         tw.readXML();
