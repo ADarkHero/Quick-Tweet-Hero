@@ -293,13 +293,13 @@ public class QuickTweetHeroController implements Initializable {
                     helpButton.fire();
                     keys[1] = "";
                 }
-                if (keys[0].equals("H") && keys[1].equals("CONTROL") || keys[1].equals("H") && keys[0].equals("CONTROL")) {
+                if (keys[1].equals("H") && keys[0].equals("CONTROL")) {
                     helpButton.fire();
                     keys[1] = "";
                 }
 
                 //Send Tweet
-                if (keys[0].equals("ENTER") && keys[1].equals("CONTROL") || keys[1].equals("ENTER") && keys[0].equals("CONTROL")) {
+                if (keys[1].equals("ENTER") && keys[0].equals("CONTROL")) {
                     tweetButton.fire();
                     keys[1] = "";
                 }
@@ -309,7 +309,7 @@ public class QuickTweetHeroController implements Initializable {
                 }
 
                 //Delete textfield
-                if (keys[0].equals("N") && keys[1].equals("CONTROL") || keys[1].equals("N") && keys[0].equals("CONTROL")) {
+                if (keys[1].equals("N") && keys[0].equals("CONTROL")) {
                     resetInputButton.fire();
                     keys[1] = "";
                 }
@@ -319,7 +319,7 @@ public class QuickTweetHeroController implements Initializable {
                 }
 
                 //Quick save
-                if (keys[0].equals("S") && keys[1].equals("CONTROL") || keys[1].equals("S") && keys[0].equals("CONTROL")) {
+                if (keys[1].equals("S") && keys[0].equals("CONTROL")) {
                     saveButton.fire();
                     keys[1] = "";
                 }
@@ -329,7 +329,7 @@ public class QuickTweetHeroController implements Initializable {
                 }
 
                 //Not so quick save
-                if (keys[0].equals("S") && keys[1].equals("ALT") || keys[1].equals("S") && keys[0].equals("ALT")) {
+                if (keys[1].equals("S") && keys[0].equals("ALT")) {
                     saveAsButton.fire();
                     keys[1] = "";
                 }
@@ -339,7 +339,7 @@ public class QuickTweetHeroController implements Initializable {
                 }
 
                 //Open file
-                if (keys[0].equals("O") && keys[1].equals("CONTROL") || keys[1].equals("O") && keys[0].equals("CONTROL")) {
+                if (keys[1].equals("O") && keys[0].equals("CONTROL")) {
                     viewButton.fire();
                     keys[1] = "";
                 }
