@@ -4,6 +4,8 @@
  */
 package quicktweethero;
 
+import java.awt.datatransfer.*;
+import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +18,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -59,6 +62,16 @@ public class QuickTweetHeroController implements Initializable {
     @FXML
     private Button moveButton;
     @FXML
+    private Button quickQuoteButton;
+    @FXML
+    private Button lastTweetButton;
+    @FXML
+    private Button lastRTButton;
+    @FXML
+    private Button copyButton;
+    @FXML
+    private Button pasteButton;
+    @FXML
     private Button charCount;
     @FXML
     private ImageView saveButtonImage;
@@ -76,6 +89,10 @@ public class QuickTweetHeroController implements Initializable {
     private ImageView moveButtonImage;
     @FXML
     private ImageView resetInputImage;
+    @FXML
+    private Label hashtags;
+    @FXML
+    private Label mentions;
 
     private static Tweet tw;
     private static String tweet = null;
@@ -98,9 +115,6 @@ public class QuickTweetHeroController implements Initializable {
 
         //Did it work?
         boolean work = tw.newTweet(textField.getText());
-
-        //Success/Failure message
-        JFrame frame = null;
 
         if (work) {
             tweetButton.setStyle("-fx-base: #007700;");
@@ -234,20 +248,169 @@ public class QuickTweetHeroController implements Initializable {
     private void showConfig(ActionEvent event) throws IOException {
         Config c = new Config();
     }
+    
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void quickQuote(ActionEvent event){
+        textField.setText("\"" + textField.getText() + "\"");
+        textField.positionCaret(textField.getLength()-1);
+        updateCharcount();
+    }
+    
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void lastTweet(ActionEvent event){
+        textField.setText(textField.getText() + " #LastTweet");
+        textField.positionCaret(textField.getLength());
+        updateCharcount();
+    }
+    
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void lastRT(ActionEvent event){
+        textField.setText(textField.getText() + " #LastRT");
+        textField.positionCaret(textField.getLength());
+        updateCharcount();
+    }
+    
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void copy(ActionEvent event){
+        String myString = textField.getText();
+        StringSelection stringSelection = new StringSelection (myString);
+        Clipboard clpbrd = Toolkit.getDefaultToolkit ().getSystemClipboard ();
+        clpbrd.setContents (stringSelection, null);
+        
+        copyButton.setText("Copied");
 
+        //Reset Copy Button after 3 Seconds 
+        Timeline timeline;
+        EventHandler eh = new EventHandler() {
+
+            @Override
+            public void handle(Event t) {
+                copyButton.setText("Copy");
+            }
+        };
+
+        KeyFrame key = new KeyFrame(Duration.seconds(3), eh);
+
+        timeline = new Timeline(key);
+        timeline.play();
+    }
+    
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void paste(ActionEvent event){
+        Clipboard c = Toolkit.getDefaultToolkit().getSystemClipboard();
+        Transferable t = c.getContents(this);
+        if (t == null)
+            return;
+        try {
+            String text = textField.getText() + (String) t.getTransferData(DataFlavor.stringFlavor);
+            textField.setText(text);
+            textFieldFunctions();
+            textField.positionCaret(textField.getLength());
+        } catch (Exception e){
+            e.printStackTrace();
+        }    
+    }
+
+    /**
+     * Functions, that should be executed, after the textField is updated.
+     */
+    @FXML
+    private void textFieldFunctions(){
+        updateCharcount();
+        updateHashtags();
+        updateMentions();
+    }
+    
+    /**
+     * 
+     */
+    @FXML
+    private void updateHashtags(){
+        String text = textField.getText();
+        String tags = "";
+        
+        if(text.contains("#")){
+            String words[] = text.split(" ");
+            
+            for (String word : words) {
+                if (word.startsWith("#")) {
+                    tags += word;
+                }
+            }
+            
+            tags = tags.replaceAll("#", "\r\n #");          //Add new line after tags
+            tags = tags.substring(2);                       //Remove new line before first tag
+            
+            hashtags.setText(tags);
+        }
+        else{
+            hashtags.setText("");
+        }
+    }
+    
+     /**
+     * 
+     */
+    @FXML
+    private void updateMentions(){
+        String text = textField.getText();
+        String ments = "";
+        
+        if(text.contains("@")){
+            String words[] = text.split(" ");
+            
+            for (String word : words) {
+                if (word.startsWith("@")) {
+                    ments += word;
+                }
+            }
+            
+            ments = ments.replaceAll("@", "\r\n @");          //Add new line after tags
+            ments = ments.substring(2);                       //Remove new line before first tag
+            
+            mentions.setText(ments);
+        }
+        else{
+            mentions.setText("");
+        }
+    }
+    
+    /**
+     * 
+     */
     @FXML
     private void updateCharcount() {
         int length = textField.getLength();
 
         if (length > 140) {
-            charCount.setTextFill(Color.web("#FF0000"));
+            charCount.setTextFill(Color.web("#000000"));
             tweetButton.setDisable(true);
-            charCount.setStyle("-fx-font-weight: bold;");
+            charCount.setStyle("-fx-font-weight: bold; -fx-background-color: #007700;");
             charCount.setText("" + length);
         } else {
             charCount.setTextFill(Color.web("#FFFFFF"));
             tweetButton.setDisable(false);
-            charCount.setStyle("-fx-font-weight: normal;");
+            charCount.setStyle("-fx-font-weight: normal; -fx-background-color: #007700;");
             charCount.setText("" + length + " / 140");
         }
 
@@ -281,6 +444,9 @@ public class QuickTweetHeroController implements Initializable {
             public void handle(KeyEvent t) {
                 //Track keyboard shortcuts
                 keys[1] = t.getCode().toString();
+                
+                //Debug
+                //System.out.println(keys[1]);
 
                 //Exit Program
                 if (keys[0].equals("ESCAPE") || keys[1].equals("ESCAPE")) {
@@ -351,6 +517,30 @@ public class QuickTweetHeroController implements Initializable {
                 //Configuration
                 if (keys[0].equals("F12") || keys[1].equals("F12")) {
                     configButton.fire();
+                    keys[1] = "";
+                }
+                
+                //Copy
+                if (keys[1].equals("C") && keys[0].equals("ALT")) {
+                    copyButton.fire();
+                    keys[1] = "";
+                }
+                
+                //Paste
+                if (keys[1].equals("V") && keys[0].equals("ALT")) {
+                    pasteButton.fire();
+                    keys[1] = "";
+                }
+                
+                //Last Tweet
+                if (keys[1].equals("DIGIT1") && keys[0].equals("CONTROL")) {
+                    lastTweetButton.fire();
+                    keys[1] = "";
+                }
+                
+                //Quotate
+                if (keys[1].equals("DIGIT2") && keys[0].equals("CONTROL")) {
+                    quickQuoteButton.fire();
                     keys[1] = "";
                 }
 

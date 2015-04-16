@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.web.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
@@ -10,24 +11,36 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="215.0" prefWidth="525.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quicktweethero.QuickTweetHeroController">
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quicktweethero.QuickTweetHeroController">
     <children>
-      <TextArea id="textField" fx:id="textField" layoutX="88.0" layoutY="43.0" maxHeight="1.7976931348623157E308" maxWidth="500.0" onKeyReleased="#updateCharcount" prefHeight="135.0" prefWidth="350.0" promptText="Input your tweet..." scrollLeft="10.0" scrollTop="5.0" wrapText="true">
+      <TextArea id="textField" fx:id="textField" layoutX="184.0" layoutY="48.0" maxHeight="1.7976931348623157E308" maxWidth="500.0" onKeyReleased="#textFieldFunctions" prefHeight="135.0" prefWidth="350.0" promptText="Input your tweet..." scrollLeft="10.0" scrollTop="5.0" wrapText="true">
          <font>
             <Font name="Calibri Bold" size="18.0" />
          </font>
+         <tooltip>
+            <Tooltip text="Text Input (YOU DON'T SAY?)" />
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
       </TextArea>
-        <Button fx:id="tweetButton" defaultButton="true" layoutX="333.0" layoutY="182.0" onAction="#sendTweet" prefHeight="25.0" prefWidth="100.0" text="Send Tweet" textAlignment="CENTER">
+        <Button fx:id="tweetButton" defaultButton="true" layoutX="429.0" layoutY="187.0" onAction="#sendTweet" prefHeight="25.0" prefWidth="100.0" text="Send Tweet" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
+         <tooltip>
+            <Tooltip text="Send Tweet [F2 / CTRL+ENTER]" />
+         </tooltip>
       </Button>
-      <Button fx:id="charCount" disable="true" layoutX="228.0" layoutY="182.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-base: #000077;" text="Charcounter" textAlignment="CENTER">
+      <Button fx:id="charCount" disable="true" layoutX="324.0" layoutY="187.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #007700;" text="Charcounter" textAlignment="CENTER" textFill="WHITE">
          <effect>
             <DropShadow height="11.0" radius="5.0" spread="0.5" width="11.0" />
          </effect>
+         <tooltip>
+            <Tooltip text="Charcounter" />
+         </tooltip>
       </Button>
-      <Button fx:id="saveButton" layoutX="448.0" layoutY="77.0" mnemonicParsing="false" onAction="#quickSave">
+      <Button fx:id="saveButton" layoutX="544.0" layoutY="82.0" mnemonicParsing="false" onAction="#quickSave">
          <graphic>
             <ImageView fx:id="saveButtonImage" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -35,8 +48,11 @@
                </image>
             </ImageView>
          </graphic>
+         <tooltip>
+            <Tooltip text="Quicksave [F6 / CTRL+S]" />
+         </tooltip>
       </Button>
-      <Button fx:id="saveAsButton" layoutX="448.0" layoutY="113.0" mnemonicParsing="false" onAction="#saveAs">
+      <Button fx:id="saveAsButton" layoutX="544.0" layoutY="118.0" mnemonicParsing="false" onAction="#saveAs">
          <graphic>
             <ImageView fx:id="saveAsButtonImage" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -44,8 +60,11 @@
                </image>
             </ImageView>
          </graphic>
+         <tooltip>
+            <Tooltip text="Save [F7 / ALT+S]" />
+         </tooltip>
       </Button>
-      <Button fx:id="viewButton" layoutX="448.0" layoutY="150.0" mnemonicParsing="false" onAction="#viewFile">
+      <Button fx:id="viewButton" layoutX="544.0" layoutY="155.0" mnemonicParsing="false" onAction="#viewFile">
          <graphic>
             <ImageView fx:id="viewButtonImage" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -53,8 +72,11 @@
                </image>
             </ImageView>
          </graphic>
+         <tooltip>
+            <Tooltip text="Open [F8 / CTRL+O]" />
+         </tooltip>
       </Button>
-      <Button fx:id="helpButton" layoutX="185.0" layoutY="5.0" mnemonicParsing="false" onAction="#showHelp">
+      <Button fx:id="helpButton" layoutX="281.0" layoutY="10.0" mnemonicParsing="false" onAction="#showHelp">
          <graphic>
             <ImageView fx:id="helpButtonImage" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -62,8 +84,11 @@
                </image>
             </ImageView>
          </graphic>
+         <tooltip>
+            <Tooltip text="Help [F1 / CTRL+H]" />
+         </tooltip>
       </Button>
-      <Button fx:id="resetInputButton" layoutX="448.0" layoutY="39.0" mnemonicParsing="false" onAction="#resetInput">
+      <Button fx:id="resetInputButton" layoutX="544.0" layoutY="44.0" mnemonicParsing="false" onAction="#resetInput">
          <graphic>
             <ImageView fx:id="resetInputImage" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -71,8 +96,11 @@
                </image>
             </ImageView>
          </graphic>
+         <tooltip>
+            <Tooltip text="New File [F5 / CTRL+N]" />
+         </tooltip>
       </Button>
-      <Button fx:id="exitButton" layoutX="93.0" layoutY="5.0" mnemonicParsing="false" onAction="#exit">
+      <Button fx:id="exitButton" layoutX="189.0" layoutY="10.0" mnemonicParsing="false" onAction="#exit">
          <graphic>
             <ImageView fx:id="exitButtonImage" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -80,8 +108,11 @@
                </image>
             </ImageView>
          </graphic>
+         <tooltip>
+            <Tooltip text="Exit Program [ESC]" />
+         </tooltip>
       </Button>
-      <Button fx:id="configButton" layoutX="139.0" layoutY="5.0" mnemonicParsing="false" onAction="#showConfig">
+      <Button fx:id="configButton" layoutX="235.0" layoutY="10.0" mnemonicParsing="false" onAction="#showConfig">
          <graphic>
             <ImageView fx:id="configButtonImage" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -89,15 +120,64 @@
                </image>
             </ImageView>
          </graphic>
+         <tooltip>
+            <Tooltip text="Options [F12]" />
+         </tooltip>
       </Button>
-      <Button fx:id="moveButton" disable="true" layoutX="231.0" layoutY="5.0" mnemonicParsing="false">
+      <Button fx:id="moveButton" disable="true" layoutX="327.0" layoutY="10.0" mnemonicParsing="false">
          <graphic>
             <ImageView fx:id="moveButtonImage" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/Move-50.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="MOVE" />
+               </cursor>
             </ImageView>
          </graphic>
+         <tooltip>
+            <Tooltip text="Move Window" />
+         </tooltip>
       </Button>
+      <Button fx:id="lastTweetButton" layoutX="43.0" layoutY="48.0" maxHeight="25.0" maxWidth="41.0" minHeight="25.0" minWidth="42.0" mnemonicParsing="false" onAction="#lastTweet" prefHeight="25.0" prefWidth="42.0" text="#LT" textOverrun="CLIP">
+         <tooltip>
+            <Tooltip text="#LastTweet [CTRL+1]" />
+         </tooltip>
+      </Button>
+      <Button fx:id="quickQuoteButton" layoutX="90.0" layoutY="48.0" maxHeight="25.0" maxWidth="30.0" minHeight="25.0" minWidth="42.0" mnemonicParsing="false" onAction="#quickQuote" prefHeight="25.0" prefWidth="30.0" text="&quot;">
+         <tooltip>
+            <Tooltip text="Quotate Text [CTRL+2]" />
+         </tooltip></Button>
+      <Button fx:id="lastRTButton" layoutX="137.0" layoutY="48.0" maxHeight="25.0" maxWidth="30.0" minHeight="25.0" minWidth="42.0" mnemonicParsing="false" onAction="#lastRT" prefHeight="25.0" prefWidth="30.0" text="#RT">
+         <tooltip>
+            <Tooltip text="#LastRT [CTRL+3]" />
+         </tooltip>
+      </Button>
+      <Button fx:id="copyButton" layoutX="43.0" layoutY="159.0" maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="42.0" mnemonicParsing="false" onAction="#copy" prefHeight="25.0" prefWidth="60.0" text="Copy" textOverrun="CLIP">
+         <tooltip>
+            <Tooltip text="Copy [ALT+C]" />
+         </tooltip>
+      </Button>
+      <Button fx:id="pasteButton" layoutX="119.0" layoutY="159.0" maxHeight="25.0" maxWidth="60.0" minHeight="25.0" minWidth="42.0" mnemonicParsing="false" onAction="#paste" prefHeight="25.0" prefWidth="60.0" text="Paste" textOverrun="CLIP">
+         <tooltip>
+            <Tooltip text="Paste [ALT+V]" />
+         </tooltip>
+      </Button>
+      <Label fx:id="hashtags" alignment="TOP_LEFT" layoutX="189.0" layoutY="190.0" prefHeight="100.0" prefWidth="60.0" textFill="#007700">
+         <font>
+            <Font size="10.0" />
+         </font>
+         <tooltip>
+            <Tooltip text="Hashtaglist" />
+         </tooltip>
+      </Label>
+      <Label fx:id="mentions" alignment="TOP_LEFT" layoutX="251.0" layoutY="190.0" prefHeight="100.0" prefWidth="60.0" textFill="#000077" AnchorPane.topAnchor="190.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+         <tooltip>
+            <Tooltip text="Mentionlist" />
+         </tooltip>
+      </Label>
     </children>
 </AnchorPane>

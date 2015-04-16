@@ -17,8 +17,8 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="13.0" layoutY="41.0" prefHeight="170.0" prefWidth="505.0" text="ESC&#9;&#9;&#9;&#9;&#9;&#9;&#9;Close program&#10;F1&#9;&#9;CTRL+H&#9;&#9;&#9;&#9;Open help&#10;F2&#9;&#9;CTRL+ENTER&#9;&#9;&#9;Send Tweet&#10;F5&#9;&#9;CTRL+N&#9;&#9;&#9;&#9;New Tweet/Delete inputs&#10;F6&#9;&#9;CTRL+S&#9;&#9;&#9;&#9;Quick save&#10;F7&#9;&#9;ALT+S&#9;&#9;&#9;&#9;Open save dialog&#10;F8&#9;&#9;CTRL+O&#9;&#9;&#9;&#9;Open file/note&#10;F12&#9;&#9;&#9;&#9;&#9;&#9;&#9;Open configuration" />
-      <Button fx:id="closeHelpButton" layoutX="476.0" layoutY="178.0" onAction="#closeHelp" prefHeight="25.0" prefWidth="25.0" text="" textAlignment="CENTER">
+      <Label layoutX="13.0" layoutY="41.0" prefHeight="236.0" prefWidth="505.0" text="ESC&#9;&#9;&#9;&#9;&#9;&#9;&#9;Close program&#10;F1&#9;&#9;CTRL+H&#9;&#9;&#9;&#9;Open help&#10;F2&#9;&#9;CTRL+ENTER&#9;&#9;&#9;Send Tweet&#10;F5&#9;&#9;CTRL+N&#9;&#9;&#9;&#9;New Tweet/Delete inputs&#10;F6&#9;&#9;CTRL+S&#9;&#9;&#9;&#9;Quick save&#10;F7&#9;&#9;ALT+S&#9;&#9;&#9;&#9;Open save dialog&#10;F8&#9;&#9;CTRL+O&#9;&#9;&#9;&#9;Open file/note&#10;F12&#9;&#9;&#9;&#9;&#9;&#9;&#9;Open configuration&#10;ALT+C&#9;&#9;&#9;&#9;&#9;&#9;Copy whole text&#10;ALT+V&#9;&#9;&#9;&#9;&#9;&#9;Paste text&#10;CTRL+1&#9;&#9;&#9;&#9;&#9;&#9;#LastTweet&#10;CTRL+2&#9;&#9;&#9;&#9;&#9;&#9;Put text in quotations&#10;CTRL+3&#9;&#9;&#9;&#9;&#9;&#9;#LastRT" />
+      <Button fx:id="closeHelpButton" layoutX="479.0" layoutY="240.0" onAction="#closeHelp" prefHeight="25.0" prefWidth="25.0" text="" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
