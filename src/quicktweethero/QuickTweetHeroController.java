@@ -402,7 +402,7 @@ public class QuickTweetHeroController implements Initializable {
     private void updateCharcount() {
         int length = textField.getLength();
 
-        if (length > 140) {
+        if (length > 280) {
             charCount.setTextFill(Color.web("#000000"));
             tweetButton.setDisable(true);
             charCount.setStyle("-fx-font-weight: bold; -fx-background-color: #007700;");
@@ -411,7 +411,7 @@ public class QuickTweetHeroController implements Initializable {
             charCount.setTextFill(Color.web("#FFFFFF"));
             tweetButton.setDisable(false);
             charCount.setStyle("-fx-font-weight: normal; -fx-background-color: #007700;");
-            charCount.setText("" + length + " / 140");
+            charCount.setText("" + length + " / 280");
         }
 
     }
