@@ -344,7 +344,6 @@ public class QuickTweetHeroController implements Initializable {
     /**
      * 
      */
-    @FXML
     private void updateHashtags(){
         String text = textField.getText();
         String tags = "";
@@ -371,7 +370,6 @@ public class QuickTweetHeroController implements Initializable {
      /**
      * 
      */
-    @FXML
     private void updateMentions(){
         String text = textField.getText();
         String ments = "";
@@ -398,14 +396,13 @@ public class QuickTweetHeroController implements Initializable {
     /**
      * 
      */
-    @FXML
     private void updateCharcount() {
         int length = textField.getLength();
 
         if (length > 280) {
             charCount.setTextFill(Color.web("#000000"));
             tweetButton.setDisable(true);
-            charCount.setStyle("-fx-font-weight: bold; -fx-background-color: #007700;");
+            charCount.setStyle("-fx-font-weight: bold; -fx-background-color: #770000;");
             charCount.setText("" + length);
         } else {
             charCount.setTextFill(Color.web("#FFFFFF"));
